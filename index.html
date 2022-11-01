@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/alpine.min.js" defer></script>
+</head>
+
+<body class="noselect text-shadow" x-data="{ open: false, view: 'home' }">
+    <div></div>
+    <div class="main p-3 mx-auto lg:w-3/4 relative">
+
+        <!-- <div class="dummy w-0 w-80" > </div> -->
+        <div x-bind:class="open ? 'sidenav w-80' : 'sidenav w-0'">
+            <a x-on:click="view = 'home'; open = false" href="#">Home</a>
+            <a x-on:click="view = 'about'; open = false" href="#">About</a>
+            <a x-on:click="view = 'services'; open = false" href="#">Services</a>
+            <a x-on:click="view = 'clients'; open = false" href="#">Clients</a>
+            <a x-on:click="view = 'contact'; open = false" href="#">Contact</a>
+        </div>
+
+        <!-- Use any element to open the sidenav -->
+        <div x-on:click="open = !open" class="sidenavopener cursor-pointer p-2 bg-gray-100"><svg
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 ml-auto mr-0">
+                <path x-show="!open" stroke-linecap="round" stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                <path x-show="open" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
+
+        <div class="flex">
+            <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+            <div class="content mt-10 w-full">
+                <div x-show="view == 'home'" class="home">
+                    <div class="text-3xl text-center">Mirë se vjen!</div>
+                </div>
+
+                <div x-show="view == 'about'" class="about">about</div>
+                <div x-show="view == 'services'" class="about">services</div>
+                <div x-show="view == 'clients'" class="about">clients</div>
+                <div x-show="view == 'contact'" class="about">contact</div>
+            </div>
+        </div>
+
+    </div>
+    <div></div>
+</body>
+
+</html>

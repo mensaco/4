@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+    :root {
+        --h-blue: 240;
+        --h-orange: 30;
+        --h-red: 0;
+    }
+
+    .noselect {
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Safari */
+        /* Konqueror HTML */
+        -moz-user-select: none;
+        /* Old versions of Firefox */
+        /* Internet Explorer/Edge */
+        user-select: none;
+        /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    }
+
+    .text-shadow {
+        text-shadow: 0px 0px 2rem var(--tw-shadow-color);
+    }
+
+
+    .gray {
+        --color-5: hsl(0, 0%, 95%);
+        --color-10: hsl(0, 0%, 90%);
+        --color-20: hsl(0, 0%, 80%);
+        --color-50: hsl(0, 0%, 50%);
+        --color-90: hsl(0, 0%, 10%);
+    }
+
+    .blue {
+        --color-5: hsl(240, 100%, 95%);
+        --color-10: hsl(240, 100%, 90%);
+        --color-20: hsl(240, 100%, 80%);
+        --color-50: hsl(240, 100%, 50%);
+        --color-90: hsl(240, 100%, 10%);
+    }
+
+    .orange {
+        --color-5: hsl(30, 100%, 95%);
+        --color-10: hsl(30, 100%, 90%);
+        --color-20: hsl(30, 100%, 80%);
+        --color-50: hsl(30, 100%, 50%);
+        --color-90: hsl(30, 100%, 10%);
+    }
+
+
+
+    .gradient-light,
+    .gl {
+        @apply from-[var(--color-5)] to-[var(--color-10)];
+    }
+
+    .gradient-light:hover {
+        @apply from-[var(--color-10)] to-[var(--color-5)];
+    }
+
+    .bg-grad-light {
+        @apply bg-gradient-to-b grad-light;
+    }
+
+    /* The side navigation menu */
+
+
+    .sidenav {
+        @apply h-full w-0 fixed z-10 top-0 left-0 bg-gray-800/90 overflow-x-hidden pt-8 transition-[500ms];
+    }
+
+    /* The navigation menu links */
+    .sidenav a {
+        @apply p-3 pl-12 text-2xl text-gray-400 block transition-[300ms];
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    .sidenav a:hover {
+        @apply text-gray-50;
+    }
+
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+
+
+}
