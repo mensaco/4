@@ -13,27 +13,21 @@
 <body class="noselect text-shadow"
     x-data="{ open: false, view: 'home', menuItems: ['Home','About','Services','Clients','Contact'] }">
     <div></div>
-    <div class="p-3 mx-auto lg:w-3/4 relative">
+    <div class="px-3 mx-auto lg:w-3/4 relative">
 
         <!-- <div class="dummy w-0 w-80" > </div> -->
-        <div x-bind:class="open ? 'w-80' : 'w-0'"
-            class="h-full w-0 fixed z-10 top-0 left-0 bg-gray-800/90 overflow-x-hidden pt-8 xs:pt-6 transition-[500ms] md:hidden">
+        <div x-bind:class="open ? 'w-80' : 'w-0'" class="h-full w-0 fixed z-10 top-0 left-0 bg-gray-800/90 overflow-x-hidden pt-8 xs:pt-6 transition-[500ms] 
+            md:h-auto md:w-full md:static md:z-0 md:overflow-auto md:p-3 md:py-2 md:my-3 md:bg-gray-100">
             <template x-for="item in menuItems" :key="item">
                 <a x-on:click="view = item.toLowerCase(); open = false" href="#" x-text="item"
-                    class="p-3 pl-12 text-2xl text-gray-400 block transition-[300ms] hover:text-gray-50"></a>
+                    class="p-3 pl-12 md:px-5 text-2xl md:text-xl text-gray-400 block md:inline-block transition-[300ms] hover:text-gray-500"></a>
             </template>
         </div>
 
 
-        <div x-on:click="open = !open" class="sidenavopener cursor-pointer p-2 bg-gray-100">
-            <template x-for="item in menuItems" :key="item">
-                <!-- menyja për rastin > md -->
-                <a x-on:click="view = item.toLowerCase()" href="#" x-text="item"
-                    class="hidden md:inline-block p-2 pl-6 lg:p-3 lg:pl-12 text-xl text-gray-600 transition-[300ms] hover:text-gray-900"></a>
-            </template>
-
+        <div x-on:click="open = !open" class="cursor-pointer p-2 bg-gray-100 md:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6 ml-auto mr-0 md:hidden">
+                stroke="currentColor" class="w-6 h-6 ml-auto mr-0">
                 <path x-show="!open" stroke-linecap="round" stroke-linejoin="round"
                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 <path x-show="open" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
