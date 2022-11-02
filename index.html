@@ -10,23 +10,30 @@
     <script src="/js/alpine.min.js" defer></script>
 </head>
 
-<body class="noselect text-shadow" x-data="{ open: false, view: 'home' }">
+<body class="noselect text-shadow"
+    x-data="{ open: false, view: 'home', menuItems: ['Home','About','Services','Clients','Contact'] }">
     <div></div>
-    <div class="main p-3 mx-auto lg:w-3/4 relative">
+    <div class="p-3 mx-auto lg:w-3/4 relative">
 
         <!-- <div class="dummy w-0 w-80" > </div> -->
-        <div x-bind:class="open ? 'sidenav w-80' : 'sidenav w-0'">
-            <a x-on:click="view = 'home'; open = false" href="#">Home</a>
-            <a x-on:click="view = 'about'; open = false" href="#">About</a>
-            <a x-on:click="view = 'services'; open = false" href="#">Services</a>
-            <a x-on:click="view = 'clients'; open = false" href="#">Clients</a>
-            <a x-on:click="view = 'contact'; open = false" href="#">Contact</a>
+        <div x-bind:class="open ? 'w-80' : 'w-0'"
+            class="h-full w-0 fixed z-10 top-0 left-0 bg-gray-800/90 overflow-x-hidden pt-8 xs:pt-6 transition-[500ms] md:hidden">
+            <template x-for="item in menuItems" :key="item">
+                <a x-on:click="view = item.toLowerCase(); open = false" href="#" x-text="item"
+                    class="p-3 pl-12 text-2xl text-gray-400 block transition-[300ms] hover:text-gray-50"></a>
+            </template>
         </div>
 
-        <!-- Use any element to open the sidenav -->
-        <div x-on:click="open = !open" class="sidenavopener cursor-pointer p-2 bg-gray-100"><svg
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6 ml-auto mr-0">
+
+        <div x-on:click="open = !open" class="sidenavopener cursor-pointer p-2 bg-gray-100">
+            <template x-for="item in menuItems" :key="item">
+                <!-- menyja për rastin > md -->
+                <a x-on:click="view = item.toLowerCase()" href="#" x-text="item"
+                    class="hidden md:inline-block p-2 pl-6 lg:p-3 lg:pl-12 text-xl text-gray-600 transition-[300ms] hover:text-gray-900"></a>
+            </template>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 ml-auto mr-0 md:hidden">
                 <path x-show="!open" stroke-linecap="round" stroke-linejoin="round"
                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 <path x-show="open" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -34,10 +41,9 @@
         </div>
 
         <div class="flex">
-            <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-            <div class="content mt-10 w-full">
+            <div class="content mt-10 p-3 w-full">
                 <div x-show="view == 'home'" class="home">
-                    <div class="text-3xl text-center">Mirë se vjen!</div>
+                    <div class="text-3xl text-center md:text-left">Mirë se vjen!</div>
                 </div>
 
                 <div x-show="view == 'about'" class="about">about</div>
