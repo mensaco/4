@@ -23,6 +23,10 @@
         /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     }
 
+    .bg-squares {
+        background: white url('/img/sq.png');
+    }
+
     .text-shadow {
         text-shadow: 0px 0px 2rem var(--tw-shadow-color);
     }
@@ -67,34 +71,8 @@
         @apply bg-gradient-to-b grad-light;
     }
 
-    /* The side navigation menu */
 
 
-    .sidenav {
-        @apply h-full w-0 fixed z-10 top-0 left-0 bg-gray-800/90 overflow-x-hidden pt-8 transition-[500ms];
-    }
-
-    /* The navigation menu links */
-    .sidenav a {
-        @apply p-3 pl-12 text-2xl text-gray-400 block transition-[300ms];
-    }
-
-    /* When you mouse over the navigation links, change their color */
-    .sidenav a:hover {
-        @apply text-gray-50;
-    }
-
-
-    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-    @media screen and (max-height: 450px) {
-        .sidenav {
-            padding-top: 15px;
-        }
-
-        .sidenav a {
-            font-size: 18px;
-        }
-    }
 
 
 }

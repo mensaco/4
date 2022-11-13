@@ -2,30 +2,27 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
     <script src="/js/alpine.min.js" defer></script>
 </head>
 
-<body class="noselect text-shadow"
+<body class="noselect text-shadow bg-gray-100"
     x-data="{ open: false, view: 'home', menuItems: ['Home','About','Services','Clients','Contact'] }">
-    <div></div>
-    <div class="px-3 mx-auto lg:w-3/4 relative">
-
-        <!-- <div class="dummy w-0 w-80" > </div> -->
-        <div x-bind:class="open ? 'w-80' : 'w-0'" class="h-full w-0 fixed z-10 top-0 left-0 bg-gray-800/90 overflow-x-hidden pt-8 xs:pt-6 transition-[500ms] 
-            md:h-auto md:w-full md:static md:z-0 md:overflow-auto md:p-3 md:py-2 md:my-3 md:bg-gray-100">
+    <div class="mx-auto xl:w-3/4 relative">
+        <!-- <div class="dummy w-0 w-80 border-r-2 border-0" > </div> -->
+        <div x-bind:class="open ? 'w-80 border-r-2' : 'w-0 border-0'"
+            class="h-full w-0 fixed z-10 top-0 left-0 border-gray-500 bg-squares md:bg-white overflow-x-hidden pt-8 xs:pt-6 transition-[500ms] md:h-auto md:w-full md:static md:z-0 md:overflow-auto md:p-3 md:py-2 md:my-3">
             <template x-for="item in menuItems" :key="item">
                 <a x-on:click="view = item.toLowerCase(); open = false" href="#" x-text="item"
-                    class="p-3 pl-12 md:px-5 text-2xl md:text-xl text-gray-400 block md:inline-block transition-[300ms] hover:text-gray-500"></a>
+                    class="p-3 pl-12 md:px-5 text-2xl md:text-xl block md:inline-block transition-[300ms] text-gray-500 hover:text-gray-700"></a>
             </template>
         </div>
 
-
-        <div x-on:click="open = !open" class="cursor-pointer p-2 bg-gray-100 md:hidden">
+        <div x-on:click="open = !open" class="cursor-pointer p-2 bg-gray-300 md:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6 ml-auto mr-0">
                 <path x-show="!open" stroke-linecap="round" stroke-linejoin="round"
@@ -46,9 +43,10 @@
                 <div x-show="view == 'contact'" class="about">contact</div>
             </div>
         </div>
-
+        <div class="p-3 text-gray-500 bg-white/95 text-center">
+            Copyright xy 2022
+        </div>
     </div>
-    <div></div>
 </body>
 
 </html>
